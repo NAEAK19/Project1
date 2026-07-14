@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow:hidden;
+    background:#050816;
+}
+
+/* ===========================
+      LOGIN PAGE
+=========================== */
+
+.login-page{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+    overflow:hidden;
+
+    background:linear-gradient(-45deg,#020617,#08152f,#10254f,#050816);
+    background-size:400% 400%;
+    animation:bgMove 15s ease infinite;
+}
+
+@keyframes bgMove{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
+}
+
+/* ===========================
+      Glow Ball
+=========================== */
+
+.bg1,
+.bg2,
+.bg3{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+}
+
+.bg1{
+    width:350px;
+    height:350px;
+    background:#2563eb;
+    top:-120px;
+    left:-120px;
+    animation:float1 8s ease-in-out infinite alternate;
+}
+
+.bg2{
+    width:350px;
+    height:350px;
+    background:#00d4ff;
+    bottom:-120px;
+    right:-120px;
+    animation:float2 7s ease-in-out infinite alternate;
+}
+
+.bg3{
+    width:220px;
+    height:220px;
+    background:#9333ea;
+    left:20%;
+    bottom:15%;
+    animation:float3 6s ease-in-out infinite alternate;
+}
+
+@keyframes float1{
+    to{transform:translate(100px,70px);}
+}
+
+@keyframes float2{
+    to{transform:translate(-80px,-70px);}
+}
+
+@keyframes float3{
+    to{transform:translate(40px,-60px);}
+}
+
+/* ===========================
+      CARD
+=========================== */
+
+.card{
+
+    position:relative;
+    z-index:10;
+
+    width:400px;
+    padding:45px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    box-shadow:0 0 40px rgba(0,150,255,.35);
+
+    animation:popup .8s ease;
+
+}
+
+@keyframes popup{
+
+    from{
+        opacity:0;
+        transform:translateY(-40px) scale(.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+    inset:0;
+
+    border-radius:25px;
+
+    padding:2px;
+
+    background:linear-gradient(90deg,#00bfff,#2563eb,#9333ea);
+
+    -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+
+    -webkit-mask-composite:xor;
+
+    mask-composite:exclude;
+
+    pointer-events:none;
+
+}
+
+/* ===========================
+      TEXT
+=========================== */
+
+.card h1,
+.card p,
+.card input,
+.card button,
+.error{
+
+    position:relative;
+    z-index:2;
+
+}
+
+.card h1{
+
+    color:white;
+    text-align:center;
+
+    font-size:42px;
+
+    margin-bottom:8px;
+
+}
+
+.card p{
+
+    text-align:center;
+
+    color:#9ec5ff;
+
+    margin-bottom:30px;
+
+}
+
+/* ===========================
+      INPUT
+=========================== */
+
+.card input{
+
+    width:100%;
+
+    padding:15px;
+
+    margin-bottom:18px;
+
+    border:none;
+    outline:none;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,.08);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:.3s;
+
+}
+
+.card input::placeholder{
+
+    color:#9ec5ff;
+
+}
+
+.card input:focus{
+
+    transform:scale(1.02);
+
+    background:rgba(255,255,255,.12);
+
+    box-shadow:0 0 20px #3b82f6;
+
+}
+
+/* ===========================
+      BUTTON
+=========================== */
+
+.card button{
+
+    width:100%;
+
+    padding:15px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(90deg,#2563eb,#00c6ff);
+
+    transition:.3s;
+
+}
+
+.card button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 25px #00c6ff;
+
+}
+
+.card button:active{
+
+    transform:scale(.97);
+
+}
+
+button:disabled{
+
+    background:#555;
+
+    cursor:not-allowed;
+
+    opacity:.7;
+
+    box-shadow:none;
+
+}
+
+button:disabled:hover{
+
+    transform:none;
+
+}
+
+input:disabled{
+
+    opacity:.6;
+
+    cursor:not-allowed;
+
+}
+
+/* ===========================
+      ERROR
+=========================== */
+
+.error{
+
+    margin-bottom:18px;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:rgba(255,0,0,.15);
+
+    border:1px solid #ff4d4d;
+
+    color:#ffd0d0;
+
+    text-align:center;
+
+    animation:shake .45s, glow .8s;
+
+}
+
+.error strong{
+
+    display:block;
+
+    font-size:15px;
+
+}
+
+.error p{
+
+    margin-top:10px;
+
+    color:#ffe082;
+
+    font-weight:600;
+
+}
+
+/* Shake */
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+    20%{transform:translateX(-8px);}
+    40%{transform:translateX(8px);}
+    60%{transform:translateX(-8px);}
+    80%{transform:translateX(8px);}
+    100%{transform:translateX(0);}
+
+}
+
+/* Glow */
+
+@keyframes glow{
+
+    0%{
+        box-shadow:0 0 0 rgba(255,0,0,.2);
+    }
+
+    50%{
+        box-shadow:0 0 30px rgba(255,50,50,.9);
+    }
+
+    100%{
+        box-shadow:0 0 0 rgba(255,0,0,.2);
+    }
+
+}
+
+/* ===========================
+      HOME
+=========================== */
+
+.home{
+
+    width:100%;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    background:linear-gradient(135deg,#050816,#09162d,#10254f);
+
+    color:white;
+
+    animation:fade .8s;
+
+}
+
+@keyframes fade{
+
+    from{
+        opacity:0;
+    }
+
+    to{
+        opacity:1;
+    }
+
+}
+
+.home h1{
+
+    font-size:60px;
+
+    margin-bottom:20px;
+
+    text-shadow:0 0 20px #3b82f6;
+
+}
+
+.home p{
+
+    color:#9ec5ff;
+
+    font-size:22px;
+
+    margin-bottom:35px;
+
+}
+
+.home button{
+
+    padding:15px 40px;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:white;
+
+    font-size:18px;
+
+    background:linear-gradient(90deg,#2563eb,#00c6ff);
+
+    transition:.3s;
+
+}
+
+.home button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 0 25px #00c6ff;
+
+}
