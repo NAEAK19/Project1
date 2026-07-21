@@ -1,4 +1,4 @@
-git --versionfunction Home({ setIsLogin }) {
+function Home({ setIsLogin }) {
   return (
     <div className="home">
       <h1>😘ว๊ายยยยยโดนหลอก😜</h1>
